@@ -1,0 +1,31 @@
+{
+  "name": "ccc-extension-template",
+  "version": "1.0.0.20210614",
+  "description": "扩展开发模板",
+  "author": "ifaswind（陈皮皮）",
+  "author-info": {
+    "wechat": "im_chenpipi",
+    "email": "952157129@qq.com",
+    "git-home": "https://gitee.com/ifaswind",
+    "official-account": "公众号「菜鸟小栈」"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/ifaswind/ccc-extension-template"
+  },
+  "main": "main.js",
+  "main-menu": {
+    "i18n:MAIN_MENU.package.title/i18n:ccc-extension-template.name": {
+      "message": "ccc-extension-template:open-panel"
+    }
+  },
+  "reload": {
+    "renderer": [],
+    "ignore": [
+      "panels/**/*",
+      "CHANGELOG.md",
+      "README.md",
+      "README.en.md"
+    ]
+  }
+}
