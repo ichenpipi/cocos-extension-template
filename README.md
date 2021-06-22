@@ -59,6 +59,15 @@
 
 
 
+## 依赖
+
+- [cocos-creator](https://github.com/cocos-creator)
+- [electron](https://github.com/electron/electron)
+- [vue](https://github.com/vuejs/vue)
+- [node-fetch](https://github.com/node-fetch/node-fetch)
+
+
+
 ## 许可
 
 本项目使用 [MIT license](https://opensource.org/licenses/MIT) 许可证书。

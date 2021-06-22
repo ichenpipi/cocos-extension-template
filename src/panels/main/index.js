@@ -1,9 +1,9 @@
 const { ipcRenderer, shell } = require('electron');
-const { getUrlParam } = require('../../utils/browser-utils');
-const I18n = require('../../i18n/i18n');
+const { getUrlParam } = require('../../../utils/browser-utils');
+const I18n = require('../../i18n');
 
 /** 包名 */
-const PACKAGE_NAME = require('../../package.json').name;
+const PACKAGE_NAME = require('../../../package.json').name;
 
 /** 语言 */
 const LANG = getUrlParam('lang');
@@ -63,6 +63,17 @@ const App = {
    */
   mounted() {
     ipcRenderer.on(`${PACKAGE_NAME}:greet-reply`, this.onGreetReply.bind(this));
+    // 覆盖 a 标签点击回调（使用默认浏览器打开网页）
+    const links = document.querySelectorAll('a[href]');
+    links.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const url = link.getAttribute('href');
+        shell.openExternal(url);
+      });
+    });
+    // （主进程）检查更新
+    ipcRenderer.send(`${PACKAGE_NAME}:check-update`, true);
     // 1.5 秒后
     setTimeout(() => {
       this.greet();

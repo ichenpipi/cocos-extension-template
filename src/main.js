@@ -1,18 +1,21 @@
 const { BrowserWindow, ipcMain } = require('electron');
-const Fs = require('fs');
-const Path = require('path');
+const I18n = require('./i18n');
+const Updater = require('./updater');
 
 /** 包名 */
-const PACKAGE_NAME = require('./package.json').name;
+const PACKAGE_NAME = require('../package.json').name;
+
+/** 语言 */
+const LANG = Editor.lang;
 
 /**
  * i18n
  * @param {string} key
  * @returns {string}
  */
-const translate = (key) => Editor.T(`${PACKAGE_NAME}.${key}`);
+const translate = (key) => I18n.translate(LANG, key);
 
-/** 扩展名 */
+/** 扩展名称 */
 const EXTENSION_NAME = translate('name');
 
 module.exports = {
@@ -30,12 +33,21 @@ module.exports = {
       openPanel();
     },
 
+    /**
+     * 检查更新
+     */
+    'check-update'() {
+      checkUpdate(true);
+    },
+
   },
 
   /**
    * 生命周期：加载
    */
   load() {
+    ipcMain.on(`${PACKAGE_NAME}:check-update`, onCheckUpdateEvent);
+    ipcMain.on(`${PACKAGE_NAME}:print`, onPrintEvent);
     ipcMain.on(`${PACKAGE_NAME}:greet`, onGreetEvent);
   },
 
@@ -43,14 +55,35 @@ module.exports = {
    * 生命周期：卸载
    */
   unload() {
+    ipcMain.removeAllListeners(`${PACKAGE_NAME}:check-update`);
+    ipcMain.removeAllListeners(`${PACKAGE_NAME}:print`);
     ipcMain.removeAllListeners(`${PACKAGE_NAME}:greet`);
   },
 
 }
 
 /**
+ * （渲染进程）检查更新回调
+ * @param {Electron.IpcMainEvent} event 
+ * @param {boolean} logWhatever 无论有无更新都打印提示
+ */
+function onCheckUpdateEvent(event, logWhatever) {
+  checkUpdate(logWhatever);
+}
+
+/**
+ * （渲染进程）打印事件回调
+ * @param {Electron.IpcMainEvent} event 
+ * @param {{ type: string, content: string }} options 选项
+ */
+function onPrintEvent(event, options) {
+  const { type, content } = options;
+  print(type, content);
+}
+
+/**
  * （渲染进程）事件回调
- * @param {*} event 
+ * @param {Electron.IpcMainEvent} event 
  * @param {string} content 
  */
 function onGreetEvent(event, content) {
@@ -89,6 +122,7 @@ function openPanel() {
       resizable: true,
       minimizable: false,
       maximizable: false,
+      fullscreenable: false,
       skipTaskbar: true,
       alwaysOnTop: true,
       hasShadow: false,
@@ -98,8 +132,7 @@ function openPanel() {
       },
     });
   // 加载页面（并传递当前语言）
-  const lang = Editor.lang;
-  win.loadURL(`file://${__dirname}/panels/main/index.html?lang=${lang}`);
+  win.loadURL(`file://${__dirname}/panels/main/index.html?lang=${LANG}`);
   // 监听按键（ESC 关闭）
   win.webContents.on('before-input-event', (event, input) => {
     if (input.key === 'Escape') {
@@ -109,7 +142,7 @@ function openPanel() {
   // 就绪后展示（避免闪烁）
   win.on('ready-to-show', () => win.show());
   // 失焦后（自动关闭）
-  win.on('blur', () => closePanel());
+  // win.on('blur', () => closePanel());
   // 关闭后（移除引用）
   win.on('closed', () => (panel = null));
   // 调试用的 devtools（detach 模式需要取消失焦自动关闭）
@@ -157,4 +190,50 @@ function getPosition(size, anchor) {
     }
   }
   return [x, y];
+}
+
+/**
+ * 检查更新
+ * @param {boolean} logWhatever 无论有无更新都打印提示
+ */
+async function checkUpdate(logWhatever) {
+  const hasNewVersion = await Updater.check();
+  // 打印到控制台
+  if (hasNewVersion) {
+    print('info', translate('hasNewVersion'));
+  } else if (logWhatever) {
+    print('info', translate('currentLatest'));
+  }
+}
+
+/**
+ * 打印信息到控制台
+ * @param {'log' | 'info' | 'warn' | 'error' | string} type 类型 | 内容
+ * @param {string} content 内容
+ */
+function print(type, content = undefined) {
+  if (content == undefined) {
+    content = type;
+    type = 'log';
+  }
+  const message = `[${EXTENSION_NAME}] ${content}`;
+  switch (type) {
+    default:
+    case 'log': {
+      Editor.log(message);
+      break;
+    }
+    case 'info': {
+      Editor.info(message);
+      break;
+    }
+    case 'warn': {
+      Editor.warn(message);
+      break;
+    }
+    case 'error': {
+      Editor.error(message);
+      break;
+    }
+  }
 }

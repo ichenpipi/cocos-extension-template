@@ -1,7 +1,7 @@
 {
   "name": "ccc-extension-template",
-  "version": "1.0.0.20210614",
-  "description": "扩展开发模板",
+  "version": "1.1.0.20210622",
+  "description": "一个扩展开发模板",
   "author": "ifaswind（陈皮皮）",
   "author-info": {
     "wechat": "im_chenpipi",
@@ -13,16 +13,21 @@
     "type": "git",
     "url": "https://gitee.com/ifaswind/ccc-extension-template"
   },
-  "main": "main.js",
+  "main": "src/main.js",
   "main-menu": {
-    "i18n:MAIN_MENU.package.title/i18n:ccc-extension-template.name": {
-      "message": "ccc-extension-template:open-panel"
+    "i18n:MAIN_MENU.package.title/i18n:ccc-extension-template.name/i18n:ccc-extension-template.open": {
+      "message": "ccc-extension-template:open-panel",
+      "icon": "/images/setting.png"
+    },
+    "i18n:MAIN_MENU.package.title/i18n:ccc-extension-template.name/i18n:ccc-extension-template.checkUpdate": {
+      "message": "ccc-extension-template:check-update",
+      "icon": "/images/update.png"
     }
   },
   "reload": {
     "renderer": [],
     "ignore": [
-      "panels/**/*",
+      "src/panels/**/*",
       "CHANGELOG.md",
       "README.md",
       "README.en.md"

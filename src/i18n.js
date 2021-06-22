@@ -1,5 +1,5 @@
-const zh = require('./zh');
-const en = require('./en');
+const zh = require('../i18n/zh');
+const en = require('../i18n/en');
 
 /**
  * 多语言
@@ -26,6 +26,6 @@ const I18n = {
         return this[lang] ? this[lang][key] : undefined;
     }
 
-}
+};
 
 module.exports = I18n;
