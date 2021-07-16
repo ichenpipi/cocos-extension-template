@@ -1,7 +1,16 @@
-const fetch = require('../lib/node-fetch');
+const fetch = require('../../lib/node-fetch');
+const PackageUtil = require('./package-util');
+
+/** 本地版本 */
+const LOCAL_VERSION = PackageUtil.version;
+
+/** 仓库地址 */
+const REPOSITORY_URL = PackageUtil.repositoryUrl;
 
 /**
  * 更新器
+ * @author ifaswind (陈皮皮)
+ * @version 20210713
  */
 const Updater = {
 
@@ -9,7 +18,7 @@ const Updater = {
      * 远端地址
      * @type {string}
      */
-    remote: 'https://gitee.com/ifaswind/ccc-extension-template',
+    remote: REPOSITORY_URL,
 
     /**
      * 分支
@@ -56,7 +65,7 @@ const Updater = {
      * @returns {string}
      */
     getLocalVersion() {
-        return require('../package.json').version;
+        return LOCAL_VERSION;
     },
 
     /**

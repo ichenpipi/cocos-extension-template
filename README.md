@@ -4,7 +4,7 @@
 
 [Cocos Creator 编辑器扩展]
 
-**一个扩展开发模板。**
+**一个扩展开发模板，让你不必从零开始...**
 
 
 
@@ -34,6 +34,18 @@
 
 ## 下载 & 安装
 
+### 扩展商店安装
+
+本扩展已上架 Cocos 商店，点击 Cocos Creator 编辑器顶部菜单栏中的 *扩展 -> 扩展商店* 即可打开扩展商店。
+
+在上方搜索栏中输入“**扩展开发模板**”并搜索就可以找到本插件，点进去直接安装即可（建议安装到全局）。
+
+![cocos-store](https://gitee.com/ifaswind/image-storage/raw/master/repositories/ccc-extension-template/cocos-store.png)
+
+*扩展开发模板：[http://store.cocos.com/app/detail/3037](http://store.cocos.com/app/detail/3037)*
+
+
+
 ### 自行下载安装
 
 在[此处](https://gitee.com/ifaswind/ccc-extension-template/releases)或仓库发行版处下载最新的扩展压缩包。
@@ -43,7 +55,10 @@
 - Windows：解压到 `C:\Users\${你的用户名}\.CocosCreator\packages\` 目录下
 - macOS：解压到 `~/.CocosCreator/packages/` 目录下
 
-以 Windows 为例，扩展的 `main.js` 文件在我的电脑上的完整目录为 `C:\Users\Shaun\.CocosCreator\packages\ccc-extension-template\main.js`。
+以我的电脑为例，扩展的 `package.json` 文件的完整路径分别为：
+
+- Windows：`C:\Users\Shaun\.CocosCreator\packages\ccc-extension-template\package.json`
+- macOS：`/Users/shaun/.CocosCreator/packages/ccc-extension-template/package.json`
 
 
 

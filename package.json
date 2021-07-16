@@ -1,11 +1,12 @@
 {
   "name": "ccc-extension-template",
-  "version": "1.1.0.20210622",
-  "description": "一个扩展开发模板",
-  "author": "ifaswind（陈皮皮）",
-  "author-info": {
-    "wechat": "im_chenpipi",
+  "version": "1.2.0.20210717",
+  "description": "一个扩展开发模板，让你不必从零开始...",
+  "author": {
+    "name": "ifaswind（陈皮皮）",
     "email": "952157129@qq.com",
+    "url": "https://chenpipi.cn",
+    "wechat": "im_chenpipi",
     "git-home": "https://gitee.com/ifaswind",
     "official-account": "公众号「菜鸟小栈」"
   },
@@ -13,21 +14,39 @@
     "type": "git",
     "url": "https://gitee.com/ifaswind/ccc-extension-template"
   },
+  "license": "MIT",
   "main": "src/main.js",
   "main-menu": {
-    "i18n:MAIN_MENU.package.title/i18n:ccc-extension-template.name/i18n:ccc-extension-template.open": {
-      "message": "ccc-extension-template:open-panel",
+    "i18n:MAIN_MENU.package.title/i18n:ccc-extension-template.name/i18n:ccc-extension-template.cocos": {
+      "message": "ccc-extension-template:open-cocos-panel"
+    },
+    "i18n:MAIN_MENU.package.title/i18n:ccc-extension-template.name/i18n:ccc-extension-template.native": {
+      "message": "ccc-extension-template:open-native-panel"
+    },
+    "i18n:MAIN_MENU.package.title/i18n:ccc-extension-template.name/i18n:ccc-extension-template.setting": {
+      "message": "ccc-extension-template:open-setting-panel",
       "icon": "/images/setting.png"
     },
     "i18n:MAIN_MENU.package.title/i18n:ccc-extension-template.name/i18n:ccc-extension-template.checkUpdate": {
-      "message": "ccc-extension-template:check-update",
+      "message": "ccc-extension-template:force-check-update",
       "icon": "/images/update.png"
     }
   },
+  "panel.cocos": {
+    "main": "src/renderer/cocos/main.js",
+    "type": "dockable",
+    "title": "i18n:ccc-extension-template.name",
+    "width": 600,
+    "height": 250,
+    "min-width": 500,
+    "min-height": 150
+  },
   "reload": {
-    "renderer": [],
+    "renderer": [
+      "src/renderer/cocos/**/*"
+    ],
     "ignore": [
-      "src/panels/**/*",
+      "config.json",
       "CHANGELOG.md",
       "README.md",
       "README.en.md"

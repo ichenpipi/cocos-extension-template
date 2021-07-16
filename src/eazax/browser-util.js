@@ -1,8 +1,9 @@
 /**
  * 浏览器工具
+ * @author ifaswind (陈皮皮)
  * @version 20210621
  */
-const BrowserUtils = {
+const BrowserUtil = {
 
     /**
      * 获取当前 Url 中的参数
@@ -29,4 +30,4 @@ const BrowserUtils = {
 
 };
 
-module.exports = BrowserUtils;
+module.exports = BrowserUtil;

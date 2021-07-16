@@ -26,13 +26,25 @@ None
 
 ## Environment
 
-Platform: Windows、macOS
+Platform: Windows, macOS
 
 Engine: Cocos Creator 2.x
 
 
 
 ## Download & Installation
+
+### Install from Cocos Store
+
+You can find this extension in Cocos Store now, click on *Extension -> Cocos Store* option to open the Cocos Store.
+
+Enter "**Extension Template**" in the search bar, find it and then install it.
+
+![cocos-store](https://gitee.com/ifaswind/image-storage/raw/master/repositories/ccc-extension-template/cocos-store.png)
+
+*Extension Template：[http://store.cocos.com/app/detail/3037](http://store.cocos.com/app/detail/3037)*
+
+
 
 ### Download from git repository
 
@@ -43,7 +55,10 @@ And then unzip the package:
 - Windows: Unzip to `C:\Users\${your username}\.CocosCreator\packages\`
 - macOS: Unzip to `~/.CocosCreator/packages/`
 
-For example, on my Windows computer, the full path of `main.js` file should be `C:\Users\Shaun\.CocosCreator\packages\ccc-extension-template\main.js`.
+For example, on my computer, the full path of `package.json` file should be like:
+
+- Windows: `C:\Users\Shaun\.CocosCreator\packages\ccc-extension-template\package.json`
+- macOS: `/Users/shaun/.CocosCreator/packages/ccc-extension-template/package.json`
 
 
 
