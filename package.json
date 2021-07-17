@@ -1,7 +1,7 @@
 {
   "name": "ccc-extension-template",
   "version": "1.2.0.20210717",
-  "description": "一个扩展开发模板，让你不必从零开始...",
+  "description": "一个扩展开发模板，让你快速开发，不必从零开始...",
   "author": {
     "name": "ifaswind（陈皮皮）",
     "email": "952157129@qq.com",

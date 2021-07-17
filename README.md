@@ -4,7 +4,7 @@
 
 [Cocos Creator 编辑器扩展]
 
-**一个扩展开发模板，让你不必从零开始...**
+**一个扩展开发模板，让你快速开发，不必从零开始...**
 
 
 
@@ -20,7 +20,13 @@
 
 ## 截图
 
-无
+![cocos-panel](https://gitee.com/ifaswind/image-storage/raw/master/repositories/ccc-extension-template/cocos-panel.png)
+
+![native-panel](https://gitee.com/ifaswind/image-storage/raw/master/repositories/ccc-extension-template/native-panel.png)
+
+![setting-panel](https://gitee.com/ifaswind/image-storage/raw/master/repositories/ccc-extension-template/setting-panel.png)
+
+![assets](https://gitee.com/ifaswind/image-storage/raw/master/repositories/ccc-extension-template/assets.png)
 
 
 

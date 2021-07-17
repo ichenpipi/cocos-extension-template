@@ -20,7 +20,13 @@ If you like this project, don't forget to star [![star](https://gitee.com/ifaswi
 
 ## Screenshots
 
-None
+![cocos-panel](https://gitee.com/ifaswind/image-storage/raw/master/repositories/ccc-extension-template/cocos-panel.png)
+
+![native-panel](https://gitee.com/ifaswind/image-storage/raw/master/repositories/ccc-extension-template/native-panel.png)
+
+![setting-panel](https://gitee.com/ifaswind/image-storage/raw/master/repositories/ccc-extension-template/setting-panel.png)
+
+![assets](https://gitee.com/ifaswind/image-storage/raw/master/repositories/ccc-extension-template/assets.png)
 
 
 
